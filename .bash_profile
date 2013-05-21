@@ -1,4 +1,4 @@
-for file in ~/.bash_{aliases,prompt}; do
+for file in ~/.bash_{exports,aliases,prompt}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
@@ -26,9 +26,4 @@ shopt -s checkwinsize
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
-fi
-
-if [ -d "/opt/tigcc" ]; then
-	export PATH="$PATH:/opt/tigcc/bin"
-	export TIGCC="/opt/tigcc"
 fi

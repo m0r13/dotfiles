@@ -1,0 +1,8 @@
+export PATH="$PATH:~/bin"
+
+export EDITOR="vim"
+
+if [ -d "/opt/tigcc" ]; then
+	export PATH="$PATH:/opt/tigcc/bin"
+	export TIGCC="/opt/tigcc"
+fi
