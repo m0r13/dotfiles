@@ -12,7 +12,6 @@ set clipboard=unnamed
 
 autocmd BufWritePost .vimrc source %
 
-set title
 set showmode
 set showcmd
 set wildmenu
@@ -39,7 +38,7 @@ set si
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-" set expandtab
+set expandtab
 
 " file specific things
 autocmd FileType tex set textwidth=72
