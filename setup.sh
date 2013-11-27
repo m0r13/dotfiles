@@ -6,4 +6,6 @@ ln -s ~/dotfiles/.bash_exports ~/.bash_exports
 ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases
 ln -s ~/dotfiles/.bash_prompt ~/.bash_prompt
 
+ln -s ~/dotfiles/.zshrc ~/.zshrc
+
 ln -s ~/dotfiles/.vimrc ~/.vimrc
