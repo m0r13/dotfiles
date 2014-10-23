@@ -1,3 +1,10 @@
+hostname=$(hostname)
+if [ "$hostname" = "moritz-desktop" -o "$hostname" = "moritz-laptop" ]; then
+    has_powerline=true;
+else
+    has_powerline=false;
+fi
+
 export EDITOR=vim
 
 # Path to your oh-my-zsh configuration.
@@ -7,12 +14,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-hostname=$(hostname)
-if [[ "$hostname" == "moritz-desktop" ]]; then
-	ZSH_THEME="agnoster"
-else
-	ZSH_THEME="aussiegeek"
-fi
+ZSH_THEME="aussiegeek"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -50,6 +52,10 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
+
+if $has_powerline; then
+    source /usr/share/zsh/site-contrib/powerline.zsh
+fi
 
 # Customize to your needs...
 export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/kde/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
