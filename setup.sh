@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ln -s dotfiles/bin ../bin
+
 ln -s dotfiles/bashrc ../.bashrc
 ln -s dotfiles/bash_profile ../.bash_profile
 ln -s dotfiles/bash_exports ../.bash_exports
