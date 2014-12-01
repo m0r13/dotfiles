@@ -1,12 +1,7 @@
 #!/bin/bash
 
 hostname=$(hostname)
-wifiname=""
-if whereis iwgetid > /dev/null; then
-    wifiname=$(iwgetid | grep -Po "(?<=ESSID:\")[^\"]*")
-fi
-
-#echo $wifiname
+wifiname=$(iwgetid 2>&1 | grep -Po "(?<=ESSID:\")[^\"]*")
 
 if [ "$hostname" = "moritz-desktop" ]; then
     pkill "ssh*-L445:fs23:445"
