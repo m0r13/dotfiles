@@ -1,4 +1,5 @@
 #!/bin/bash
 
-umount /media/hpi/home
-umount /media/hpi/lehrveranstaltungen
+umount -lf /media/hpi/home
+umount -lf /media/hpi/lehrveranstaltungen
+
