@@ -1,8 +1,13 @@
 #!/bin/bash
 
-hostname=$(hostname)
 wifiname=$(nmcli dev | grep connected | grep wifi | awk '{ for(i=4;i<=NF;++i) print $i }')
 lanname=$(nmcli dev | grep connected | grep ethernet | awk '{ for(i=4;i<=NF;++i) print $i }')
+
+for dir in /media/hpi/{home,lehrveranstaltungen}; do
+    if [ ! -d "$dir" ]; then
+        mkdir -p "$dir"
+    fi
+done
 
 if [ "$wifiname" = "hpi" -o "$lanname" = "hpi_lan" ]; then
     mount -t cifs //FS23/moritz.hilscher$ /media/hpi/home -o credentials=/home/moritz/.local/etc/hpi_sambacreds,workgroup=hpi,uid=moritz,gid=moritz
