@@ -6,5 +6,5 @@
 
 rsync -av --progress "/media/hpi/lehrveranstaltungen/Mathematik_II_SS2015/" ~/hpi/2_ss15/mathe2/
 rsync -av --progress "/media/hpi/lehrveranstaltungen/Internet_und_WWW_Technologien/" ~/hpi/2_ss15/www/
-rsync -av --progress "/media/hpi/lehrveranstaltungen/FG Systemanalyse und Modellierung/Vorlesung - Modellierung II/" ~/hpi/2_ss15/mod2/
+rsync -av --progress --exclude "RobotinoVM*.zip" "/media/hpi/lehrveranstaltungen/FG Systemanalyse und Modellierung/Vorlesung - Modellierung II/" ~/hpi/2_ss15/mod2/
 
