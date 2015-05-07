@@ -6,7 +6,7 @@ else
 fi
 
 export EDITOR=vim
-export TERM=xterm-256color
+export TERM=screen-256color
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
