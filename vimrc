@@ -13,19 +13,25 @@ let g:airline#extensions#tabline#fnamemod = ':t' " show just filename
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
-Plugin 'tomasr/molokai'
+" Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+" Plugin 'altercation/vim-colors-solarized'
 " Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on
 
 " make it fancy
 syntax enable
-colorscheme molokai
+set background=dark
+" colorscheme molokai
+colorscheme gruvbox
+" colorscheme solarized
 set number
 set laststatus=2 " always display status linee
 set hlsearch " highlight previous matches when searching something
