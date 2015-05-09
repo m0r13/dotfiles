@@ -6,7 +6,6 @@ else
 fi
 
 export EDITOR=vim
-export TERM=screen-256color
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -53,6 +52,8 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(battery git tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
+
+alias tmux="tmux -2"
 
 if $has_powerline; then
     source /usr/share/zsh/site-contrib/powerline.zsh
