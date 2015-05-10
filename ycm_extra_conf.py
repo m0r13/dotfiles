@@ -38,7 +38,7 @@ flags = [
 '-Wall',
 '-Wextra',
 '-Werror',
-'-Wc++98-compat',
+#'-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
@@ -83,6 +83,44 @@ flags = [
 './tests/gmock/include',
 ]
 
+qt_flags = [
+'-DQT_CORE_LIB',
+'-DQT_GUI_LIB',
+'-DQT_NETWORK_LIB',
+'-DQT_QML_LIB',
+'-DQT_QUICK_LIB',
+'-DQT_SQL_LIB',
+'-DQT_WIDGETS_LIB',
+'-DQT_XML_LIB',
+
+'-I', '/usr/lib/qt/mkspecs/linux-clang',
+'-I', '/usr/include/qt',
+'-I', '/usr/include/qt/QtConcurrent',
+'-I', '/usr/include/qt/QtCore',
+'-I', '/usr/include/qt/QtDBus',
+'-I', '/usr/include/qt/QtGui',
+'-I', '/usr/include/qt/QtHelp',
+'-I', '/usr/include/qt/QtMultimedia',
+'-I', '/usr/include/qt/QtMultimediaWidgets',
+'-I', '/usr/include/qt/QtNetwork',
+'-I', '/usr/include/qt/QtOpenGL',
+'-I', '/usr/include/qt/QtPlatformSupport',
+'-I', '/usr/include/qt/QtPositioning',
+'-I', '/usr/include/qt/QtScript',
+'-I', '/usr/include/qt/QtScriptTools',
+'-I', '/usr/include/qt/QtSql',
+'-I', '/usr/include/qt/QtSvg',
+'-I', '/usr/include/qt/QtTest',
+'-I', '/usr/include/qt/QtUiTools',
+'-I', '/usr/include/qt/QtV8',
+'-I', '/usr/include/qt/QtWebKit',
+'-I', '/usr/include/qt/QtWebKitWidgets',
+'-I', '/usr/include/qt/QtWidgets',
+'-I', '/usr/include/qt/QtXml',
+'-I', '/usr/include/qt/QtXmlPatterns',
+]
+
+flags += qt_flags
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for

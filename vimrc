@@ -3,12 +3,18 @@ filetype off
 
 set t_Co=256
 let g:rehash256=1
+
 let g:molokai_original=1
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t' " show just filename
+
+let g:ycm_confirm_extra_conf = 0
+
+" let g:glsl_file_extensions = '*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.geom'
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -23,6 +29,8 @@ Plugin 'morhetz/gruvbox'
 " Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tikhomirov/vim-glsl'
+" Plugin 'beyondmarc/glsl.vim'
 
 call vundle#end()
 filetype plugin indent on
