@@ -22,6 +22,7 @@ Plugin 'morhetz/gruvbox'
 " Plugin 'altercation/vim-colors-solarized'
 " Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
