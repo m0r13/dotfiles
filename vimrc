@@ -7,6 +7,7 @@ let g:rehash256=1
 let g:molokai_original=1
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
 let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -54,4 +55,17 @@ set shiftwidth=4
 " show indendation types
 set list
 set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+
+" keybindings
+let mapleader = ","
+
+" nnoremap th  :tabfirst<CR>
+" nnoremap tj  :tabnext<CR>
+" nnoremap tk  :tabprev<CR>
+" nnoremap tl  :tablast<CR>
+
+nnoremap <leader>n :tabprev<CR>
+nnoremap <leader>m :tabnext<CR>
+
+nmap <F9> :!cd %:p:h && pdflatex %:p<cr>
 
