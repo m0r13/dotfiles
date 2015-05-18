@@ -15,6 +15,8 @@ let g:airline#extensions#tabline#fnamemod = ':t' " show just filename
 
 let g:ycm_confirm_extra_conf = 0
 
+let g:localvimrc_persistent = 1
+
 " let g:glsl_file_extensions = '*.glsl,*.vsh,*.fsh,*.vert,*.frag,*.geom'
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -27,11 +29,15 @@ Plugin 'bling/vim-airline'
 " Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
 " Plugin 'altercation/vim-colors-solarized'
-" Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Valloric/YouCompleteMe'
+" Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
+Plugin 'embear/vim-localvimrc'
 Plugin 'tikhomirov/vim-glsl'
 " Plugin 'beyondmarc/glsl.vim'
+Plugin 'lervag/vimtex'
 
 call vundle#end()
 filetype plugin indent on
