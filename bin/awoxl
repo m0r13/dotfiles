@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ssh raspbi "~/awoxl/awoxl $@"
+
