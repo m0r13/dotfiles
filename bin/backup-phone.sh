@@ -23,7 +23,6 @@ if [ "$1" = "--from-phone" ]; then
 elif [ "$1" = "--from-local" ]; then
     src="/home/moritz/phone"
 else
-    echo "$1"
     usage
     exit 1
 fi
@@ -33,7 +32,6 @@ if [ "$2" = "--to-local" ]; then
 elif [ "$2" = "--to-server" ]; then
     dest="yellow-ray.de:/media/storage-private/phone/5_opo2"
 else
-    echo "$2"
     usage
     exit 1
 fi
