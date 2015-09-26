@@ -2,9 +2,6 @@
 
 import sys
 import json
-import os
-import shutil
-import re
 
 PREFIX = ""
 USER = None
@@ -22,7 +19,7 @@ def get_host_config(name, ip, user=None, identity=None, proxy=None):
     return config
 
 def get_hosts_config(host, parent_host=None):
-    host_name = PREFIX + host["name"]
+    host_name = host.get("prefix", PREFIX) + host["name"]
     config = get_host_config(host_name, host["ip"], user=host.get("user", USER), identity=host.get("identity", IDENTITY), proxy=parent_host) + "\n"
     for sub_host in host.get("sub_hosts", []):
         config += get_hosts_config(sub_host, host_name) + "\n"
