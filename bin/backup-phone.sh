@@ -13,13 +13,25 @@ src=""
 dest=""
 
 if [ "$1" = "--from-phone" ]; then
-    path="/run/user/1000/gvfs/mtp:host=%5Busb%3A00*"
-    if [ $(ls -d $path* 2> /dev/null | wc -l) -ne "1" ]; then
-        echo "Can't find phone!"
-        exit 1
+#    path="/run/user/1000/gvfs/mtp:host=%5Busb%3A00*"
+#    if [ $(ls -d $path* 2> /dev/null | wc -l) -ne "1" ]; then
+#        echo "Can't find phone!"
+#        exit 1
+#    fi
+#
+#    src=$(ls -d $path*)"/Internal storage"
+    mountdir=~/phone-mnt
+    mkdir -p $mountdir
+    if ! mount | grep simple-mtpfs | grep $mountdir > /dev/null; then
+        echo "Mounting phone to $mountdir..."
+        if ! simple-mtpfs $mountdir > /dev/null; then
+            echo "Unable to mount phone!"
+            exit 1
+        fi
+    else
+        echo "Phone is mounted on $mountdir."
     fi
-
-    src=$(ls -d $path*)"/Internal storage"
+    src=$mountdir
 elif [ "$1" = "--from-local" ]; then
     src="/home/moritz/phone"
 else
