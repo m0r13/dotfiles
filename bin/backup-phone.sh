@@ -1,25 +1,6 @@
 #!/bin/bash
 
-function usage() {
-    echo "Usage: backup-phone.sh --from-phone|--from-local --to-local|--to-server"
-}
-
-if [ $# -lt 2 ]; then
-    usage
-    exit 1
-fi
-
-src=""
-dest=""
-
-if [ "$1" = "--from-phone" ]; then
-#    path="/run/user/1000/gvfs/mtp:host=%5Busb%3A00*"
-#    if [ $(ls -d $path* 2> /dev/null | wc -l) -ne "1" ]; then
-#        echo "Can't find phone!"
-#        exit 1
-#    fi
-#
-#    src=$(ls -d $path*)"/Internal storage"
+function phone_path {
     mountdir=~/phone-mnt
     mkdir -p $mountdir
     if ! mount | grep simple-mtpfs | grep $mountdir > /dev/null; then
@@ -31,24 +12,64 @@ if [ "$1" = "--from-phone" ]; then
     else
         echo "Phone is mounted on $mountdir."
     fi
-    src=$mountdir
-elif [ "$1" = "--from-local" ]; then
-    src="/home/moritz/phone"
-else
+    eval "$1=\"$mountdir\""
+}
+
+function local_path {
+    eval "$1=\"/home/moritz/phone\""
+}
+
+function server_path {
+    eval "$1=\"yellow-ray.de:/media/storage-private/phone/5_opo2\""
+}
+
+function usage() {
+    echo "Usage: backup-phone.sh source destination [rsync opts]"
+}
+
+if [ $# -lt 2 ]; then
     usage
     exit 1
 fi
 
-if [ "$2" = "--to-local" ]; then
-    dest="/home/moritz/phone"
-elif [ "$2" = "--to-server" ]; then
-    dest="yellow-ray.de:/media/storage-private/phone/5_opo2"
-else
-    usage
-    exit 1
-fi
+src=""
+dest=""
+
+case $1 in
+    phone)
+        phone_path src
+        ;;
+    local)
+        local_path src
+        ;;
+    server)
+        server_path src
+        ;;
+    *)
+        echo "Invalid source '$1'!"
+        usage
+        exit 1
+esac
+
+case $2 in
+    phone)
+        phone_path dest
+        ;;
+    local)
+        local_path dest
+        ;;
+    server)
+        server_path dest
+        ;;
+    *)
+        echo "Invalid destination '$2'!"
+        usage
+        exit 1
+esac
 
 echo "$src -> $dest"
 
-rsync -av --progress "$src/DCIM" "$src/Pictures" "$src/WhatsApp" "$src/Snapchat" "$dest/"
+# give remaining args to rsync
+shift 2
+rsync -av --progress $@ "$src/DCIM" "$src/Pictures" "$src/WhatsApp" "$src/Snapchat" "$dest/"
 
