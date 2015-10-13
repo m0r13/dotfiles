@@ -15,9 +15,10 @@ case $1 in
         exit 1
 esac
 
-volume=$(pulseaudio-ctl full-status | awk '{ print $1 }')
-muted=$(pulseaudio-ctl full-status | awk '{ print $2 }')
-bar=$(python -c 'print("#" * int('${volume}' / 100.0 * 20), end="")')
+status=$(pulseaudio-ctl full-status)
+volume=$(echo "$status" | awk '{ print $1 }')
+muted=$(echo "$status" | awk '{ print $2 }')
+bar=$(python -c 'v = int('${volume}' / 100.0 * 20); print("[" + ("#" * v) + (" " * (25-v)) + "]", end="")')
 
 summary="Beat: ${volume}%"
 if [ "$muted" = "yes" ]; then
