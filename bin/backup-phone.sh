@@ -16,7 +16,14 @@ function phone_path {
 }
 
 function local_path {
-    eval "$1=\"/home/moritz/phone\""
+    if [ $(hostname) = "moritz-laptop" ]; then
+        eval "$1=\"/home/moritz/phone\""
+    elif [ $(hostname) = "moritz-desktop" ]; then
+        eval "$1=\"/media/pictures/phone/5_opo2\""
+    else
+        echo "No local phone path available!"
+        exit 1
+    fi
 }
 
 function server_path {
