@@ -19,9 +19,10 @@ if [ -f "$userresources" ]; then
     xrdb -merge "$userresources"
 fi
 
-#if [ -f "$usermodmap" ]; then
-#    xmodmap "$usermodmap"
-#fi
+if [ -f "$usermodmap" ]; then
+    # bad bad workaround for xmodmap vs xkb issue!
+    (sleep 10 && xmodmap "$usermodmap") &
+fi
 
 # start some nice programs
 
@@ -45,6 +46,6 @@ fi
 export PATH=~/bin:$PATH
 
 i3-conf-update.sh
-#exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
-exec i3
+exec i3 -V >> ~/i3log-$(date +'%F-%k-%M-%S') 2>&1
+#exec i3
 
