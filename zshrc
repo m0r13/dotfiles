@@ -5,7 +5,7 @@ if [[ ("$hostname" = "moritz-laptop" || "$hostname" = "moritz-desktop") && -z $D
     exec startx
 fi
 
-if [ "$hostname" = "moritz-desktop" || "$hostname" = "moritz-laptop" ]; then
+if [[ "$hostname" = "moritz-desktop" || "$hostname" = "moritz-laptop" ]]; then
     has_powerline=true
 else
     has_powerline=false
