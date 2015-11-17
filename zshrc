@@ -1,8 +1,14 @@
 hostname=$(hostname)
-if [ "$hostname" = "moritz-desktop" -o "$hostname" = "moritz-laptop" ]; then
-    has_powerline=true;
+
+# autostart x on tty1
+if [[ ("$hostname" = "moritz-laptop" || "$hostname" = "moritz-desktop") && -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+    exec startx
+fi
+
+if [ "$hostname" = "moritz-desktop" || "$hostname" = "moritz-laptop" ]; then
+    has_powerline=true
 else
-    has_powerline=false;
+    has_powerline=false
 fi
 
 export EDITOR=vim
@@ -49,11 +55,12 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery git tmux tmuxinator)
+plugins=(battery git tmux tmuxinator ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
 alias tmux="tmux -2"
+alias ssh="TERM=rxvt ssh"
 
 if $has_powerline; then
     source /usr/share/zsh/site-contrib/powerline.zsh
