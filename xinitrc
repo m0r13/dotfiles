@@ -40,7 +40,7 @@ fi
 #exec xterm -geometry 80x66+0+0 -name login
 
 if [ $(hostname) = "moritz-desktop" ]; then
-    xrandr --output DisplayPort-0 --off --output DVI-1 --off --output DVI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal
+    xrandr --output DisplayPort-0 --off --output DVI-1 --off --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal
 fi
 
 export PATH=~/bin:$PATH
