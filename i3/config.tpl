@@ -101,7 +101,7 @@ bindsym $mod+a focus parent
 
 {% if desktop %}
 set $displayleft HDMI-0
-set $displayright DVI-0
+set $displayright DVI-I-1
 
 set $lws1 workspace 1 web
 set $lws2 workspace 2 files
@@ -232,8 +232,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id seafile-applet
 
 {% if desktop %}
-exec i3-msg "$lws1; layout tabbed; exec chromium; exec telegram; exec thunderbird"
-exec i3-msg "$lws2; nemo --no-desktop"
+exec i3-msg "$lws1; layout tabbed; exec chromium; exec thunderbird"
+exec i3-msg "$lws2; exec nemo --no-desktop"
 exec i3-msg "$rws1; exec urxvt -e weechat"
 exec i3-msg "$rws2; layout tabbed; exec urxvt -e ncmpcpp; exec spotify; exec pavucontrol"
 exec i3-msg "$rws3; exec urxvt -e zsh -i"
@@ -241,7 +241,6 @@ exec i3-msg "$rws4; exec urxvt -e zsh -i"
 exec i3-msg "$rws5; exec urxvt -e zsh -i"
 
 for_window [title=".* Chromium$"] move $lws1
-for_window [title="Telegram"] move $lws1
 for_window [title="Spotify"] move $rws2
 {% elif laptop %}
 exec ~/bin/i3-battery.sh
