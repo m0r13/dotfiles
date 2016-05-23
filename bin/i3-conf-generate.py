@@ -3,20 +3,15 @@
 import os
 import socket
 
-HOST = {
-    "moritz-desktop" : "desktop",
-    "moritz-laptop" : "laptop",
-}.get(socket.gethostname(), "unknown")
+from jinja2 import Environment, FileSystemLoader
 
 if __name__ == "__main__":
-    f = open("/home/moritz/.i3/i3.conf")
+    env = Environment(loader=FileSystemLoader("/home/moritz/.i3"))
+    template = env.get_template("config.tpl")
 
-    for line in f.readlines():
-        line = line.strip("\n\r")
-        if line.startswith("#include \"") and line.endswith("\""):
-            filename = line.replace("#include \"", "")[:-1]
-            filename = filename.replace("$host", HOST)
-            print(open(os.path.join("/home/moritz/.i3", filename)).read().strip("\n\r"))
-        else:
-            print(line)
-
+    hostname = socket.gethostname()
+    context = {
+        "desktop" : hostname == "moritz-desktop",
+        "laptop" : hostname == "moritz-laptop",
+    }
+    print(template.render(context))
