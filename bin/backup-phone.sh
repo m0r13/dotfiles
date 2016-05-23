@@ -78,5 +78,5 @@ echo "$src -> $dest"
 
 # give remaining args to rsync
 shift 2
-rsync -av --progress $@ "$src/DCIM" "$src/Pictures" "$src/WhatsApp" "$src/Snapchat" "$dest/"
+rsync -av --progress --ignore-existing $@ "$src/DCIM" "$src/Pictures" "$src/WhatsApp" "$src/Snapchat" "$dest/"
 
