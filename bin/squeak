@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ~/hpi/4_ss16/swt/Image/SWT2016.app
+cd ~/dev/hpi/SWT2016.app
 ./squeak.sh
