@@ -75,3 +75,6 @@ nnoremap <leader>m :tabnext<CR>
 
 nmap <F9> :!cd %:p:h && pdflatex %:p<cr>
 
+" misc
+" fix bug with YouCompleteMe
+set shortmess+=c

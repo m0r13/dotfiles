@@ -45,7 +45,8 @@ for file in bashrc \
     link_file "file" "dotfiles/$file" ".$file"
 done
 
-link_file "dir" i3 .i3
+link_file "dir" dotfiles/i3 .i3
+link_file "dir" dotfiles/urxvt .urxvt
 link_file "dir" ../dotfiles/config/dunst .config/dunst
 link_file "dir" ../dotfiles/config/pulseaudio-ctl .config/pulseaudio-ctl
 
