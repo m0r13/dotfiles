@@ -1,0 +1,9 @@
+URxvt.font: xft:Inconsolata for Powerline:medium:pixelsize=14
+URxvt.scrollBar: next
+URxvt*background: black
+URxvt*foreground: white
+
+URxvt.perl-lib: /home/moritz/.urxvt/ext/
+URxvt*keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+URxvt.perl-ext-common: default,clipboard

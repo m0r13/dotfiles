@@ -41,7 +41,8 @@ for file in bashrc \
             vimrc \
             zshrc \
             ycm_extra.conf.py \
-            xinitrc; do
+            xinitrc \
+            Xresources; do
     link_file "file" "dotfiles/$file" ".$file"
 done
 
