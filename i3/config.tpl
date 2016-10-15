@@ -150,6 +150,31 @@ set $rws7 workspace 17
 set $rws8 workspace 18
 set $rws9 workspace 19
 set $rws10 workspace 20
+{% elif bp %}
+set $displayleft DVI-0
+set $displayright HDMI2
+
+set $lws1 workspace 1 web
+set $lws2 workspace 2 files
+set $lws3 workspace 3
+set $lws4 workspace 4
+set $lws5 workspace 5
+set $lws6 workspace 6
+set $lws7 workspace 7
+set $lws8 workspace 8
+set $lws9 workspace 9
+set $lws10 workspace 10
+
+set $rws1 workspace 11 dev
+set $rws2 workspace 12
+set $rws3 workspace 13
+set $rws4 workspace 14
+set $rws5 workspace 15
+set $rws6 workspace 16
+set $rws7 workspace 17
+set $rws8 workspace 18
+set $rws9 workspace 19
+set $rws10 workspace 20
 {% endif %}
 
 workspace 1 output $displayleft
@@ -255,6 +280,8 @@ exec i3-msg "$lws3; exec urxvt -e ncmpcpp"
 exec i3-msg "$lws4; exec urxvt -e zsh -i"
 
 for_window [title=".* Chromium$"] move $lws1
+{% elif bp %}
+exec --no-startup-id feh --bg-center /home/moritz/Pictures/wallpaper/current.whatever
 {% endif %}
 
 # reload the configuration file

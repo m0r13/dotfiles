@@ -41,6 +41,8 @@ fi
 
 if [ $(hostname) = "moritz-desktop" ]; then
     xrandr --output DisplayPort-0 --off --output DVI-1 --off --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal
+elif [ $(hostname) = "BP2016D1WS06-Linux" ]; then
+    xrandr --output DisplayPort-1-0 --off --output VIRTUAL1 --off --output DP3 --off --output DP2 --off --output HDMI2 --mode 1680x1050 --pos 1920x0 --rotate normal --output HDMI1 --off --output DVI-1-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VGA1 --off
 fi
 
 export PATH=~/bin:$PATH
