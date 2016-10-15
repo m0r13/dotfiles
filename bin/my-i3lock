@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #i3lock -p win -i /home/moritz/Pictures/wallpaper/win95.png
-if [ $(hostname) = "BP2016D1WS06-Linux" ];
+if [ $(hostname) = "BP2016D1WS06-Linux" ]; then
     i3lock -t -i /home/moritz/Pictures/wallpaper/lockscreen_dual.whatever
 fi
 
