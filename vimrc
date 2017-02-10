@@ -74,6 +74,7 @@ let mapleader = ","
 nnoremap <leader>n :tabprev<CR>
 nnoremap <leader>m :tabnext<CR>
 
+nmap <F8> :!make<cr>
 nmap <F9> :!cd %:p:h && pdflatex %:p<cr>
 
 " misc

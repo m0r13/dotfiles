@@ -1,7 +1,15 @@
 #!/bin/bash
 
+WALLPAPER=/home/moritz/Pictures/wallpaper
+
 #i3lock -p win -i /home/moritz/Pictures/wallpaper/win95.png
-if [ $(hostname) = "BP2016D1WS06-Linux" ]; then
+if [ $(hostname) = "moritz-desktop" ]; then
+    cp $WALLPAPER/ninjas.png /tmp/lock.png
+    #i3lock -t -i /tmp/lock.png
+    scrot /tmp/lock_screen.png
+    mogrify -blur 20x10 -posterize 16  -dither FloydSteinberg -colors 8 /tmp/lock_screen.png
+    convert -page +0+0 /tmp/lock_screen.png -page +0+0 $WALLPAPER/ninjas_overlay.png -flatten /tmp/lock.png
+    i3lock -t -i /tmp/lock.png
+elif [ $(hostname) = "BP2016D1WS06-Linux" ]; then
     i3lock -t -i /home/moritz/Pictures/wallpaper/lockscreen_dual.whatever
 fi
-
