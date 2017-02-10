@@ -154,8 +154,8 @@ set $rws10 workspace 20
 set $displayleft DVI-0
 set $displayright HDMI2
 
-set $lws1 workspace 1 web
-set $lws2 workspace 2 files
+set $lws1 workspace 1 files
+set $lws2 workspace 2 dev
 set $lws3 workspace 3
 set $lws4 workspace 4
 set $lws5 workspace 5
@@ -165,8 +165,8 @@ set $lws8 workspace 8
 set $lws9 workspace 9
 set $lws10 workspace 10
 
-set $rws1 workspace 11 dev
-set $rws2 workspace 12
+set $rws1 workspace 11 web
+set $rws2 workspace 12 dev
 set $rws3 workspace 13
 set $rws4 workspace 14
 set $rws5 workspace 15
@@ -351,11 +351,24 @@ bindsym $mod+F2 exec "xdotool key XF86AudioMute"
 {% elif laptop %}
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+{% elif bp %}
+bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
+bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
+bindsym $mod+F2 exec "xdotool key XF86AudioMute"
 {% endif %}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command py3status -c ~/.i3/i3status.conf
+{% if bp %}
+    output DVI-1-0
+{% endif %}
+    status_command py3status -c ~/.i3/i3status.conf
 }
 
+{% if bp %}
+bar {
+    output HDMI2
+    status_command py3status -c ~/.i3/i3status_clean.conf
+}
+{% endif %}
