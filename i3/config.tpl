@@ -116,9 +116,9 @@ set $lws10 workspace 10
 
 set $rws1 workspace 11 irc
 set $rws2 workspace 12 beat
-set $rws3 workspace 13 term
-set $rws4 workspace 14 server
-set $rws5 workspace 15 mapcrafter
+set $rws3 workspace 13
+set $rws4 workspace 14
+set $rws5 workspace 15
 set $rws6 workspace 16
 set $rws7 workspace 17
 set $rws8 workspace 18
