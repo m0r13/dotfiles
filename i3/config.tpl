@@ -341,20 +341,26 @@ bindsym XF86AudioRaiseVolume exec "/home/moritz/bin/my-volume.sh up"
 bindsym XF86AudioMute exec "/home/moritz/bin/my-volume.sh toggle"
 bindsym Print exec "sleep 0.2; scrot /tmp/screen.png"
 bindsym Shift+Print exec "sleep 0.2; scrot -sb /tmp/screen.png"
-bindsym $mod+O exec "/home/moritz/bin/awoxl off"
-bindsym $mod+P exec "/home/moritz/bin/awoxl on"
+bindsym $mod+Ctrl+O exec "/home/moritz/bin/awoxl off"
+bindsym $mod+Ctrl+P exec "/home/moritz/bin/awoxl on"
+bindsym $mod+Ctrl+L exec "/home/moritz/bin/awoxl white 11"
 
 {% if desktop %}
-bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
-bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
-bindsym $mod+F2 exec "xdotool key XF86AudioMute"
+# This does not seem to work :/
+#bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
+#bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
+#bindsym $mod+F2 exec "xdotool key XF86AudioMute"
+
+bindsym $mod+F3 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
+bindsym $mod+F4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
+bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 {% elif laptop %}
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
 {% elif bp %}
-bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
-bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
-bindsym $mod+F2 exec "xdotool key XF86AudioMute"
+bindsym $mod+F3 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
+bindsym $mod+F4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
+bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 {% endif %}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
