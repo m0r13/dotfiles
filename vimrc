@@ -25,7 +25,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
 " Plugin 'altercation/vim-colors-solarized'
@@ -73,6 +74,7 @@ let mapleader = ","
 nnoremap <leader>n :tabprev<CR>
 nnoremap <leader>m :tabnext<CR>
 
+nmap <F8> :!make<cr>
 nmap <F9> :!cd %:p:h && pdflatex %:p<cr>
 
 " misc

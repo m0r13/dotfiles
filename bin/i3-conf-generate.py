@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import socket
@@ -13,5 +13,6 @@ if __name__ == "__main__":
     context = {
         "desktop" : hostname == "moritz-desktop",
         "laptop" : hostname == "moritz-laptop",
+        "bp" : hostname == "BP2016D1WS06-Linux"
     }
     print(template.render(context))

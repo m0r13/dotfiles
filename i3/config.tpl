@@ -116,9 +116,9 @@ set $lws10 workspace 10
 
 set $rws1 workspace 11 irc
 set $rws2 workspace 12 beat
-set $rws3 workspace 13 term
-set $rws4 workspace 14 server
-set $rws5 workspace 15 mapcrafter
+set $rws3 workspace 13
+set $rws4 workspace 14
+set $rws5 workspace 15
 set $rws6 workspace 16
 set $rws7 workspace 17
 set $rws8 workspace 18
@@ -142,6 +142,31 @@ set $lws10 workspace 10
 
 set $rws1 workspace 11
 set $rws2 workspace 12
+set $rws3 workspace 13
+set $rws4 workspace 14
+set $rws5 workspace 15
+set $rws6 workspace 16
+set $rws7 workspace 17
+set $rws8 workspace 18
+set $rws9 workspace 19
+set $rws10 workspace 20
+{% elif bp %}
+set $displayleft DVI-0
+set $displayright HDMI2
+
+set $lws1 workspace 1 files
+set $lws2 workspace 2 dev
+set $lws3 workspace 3
+set $lws4 workspace 4
+set $lws5 workspace 5
+set $lws6 workspace 6
+set $lws7 workspace 7
+set $lws8 workspace 8
+set $lws9 workspace 9
+set $lws10 workspace 10
+
+set $rws1 workspace 11 web
+set $rws2 workspace 12 dev
 set $rws3 workspace 13
 set $rws4 workspace 14
 set $rws5 workspace 15
@@ -255,6 +280,8 @@ exec i3-msg "$lws3; exec urxvt -e ncmpcpp"
 exec i3-msg "$lws4; exec urxvt -e zsh -i"
 
 for_window [title=".* Chromium$"] move $lws1
+{% elif bp %}
+exec --no-startup-id feh --bg-center /home/moritz/Pictures/wallpaper/current.whatever
 {% endif %}
 
 # reload the configuration file
@@ -314,21 +341,40 @@ bindsym XF86AudioRaiseVolume exec "/home/moritz/bin/my-volume.sh up"
 bindsym XF86AudioMute exec "/home/moritz/bin/my-volume.sh toggle"
 bindsym Print exec "sleep 0.2; scrot /tmp/screen.png"
 bindsym Shift+Print exec "sleep 0.2; scrot -sb /tmp/screen.png"
-bindsym $mod+O exec "/home/moritz/bin/awoxl off"
-bindsym $mod+P exec "/home/moritz/bin/awoxl on"
+bindsym $mod+Ctrl+O exec "/home/moritz/bin/awoxl off"
+bindsym $mod+Ctrl+P exec "/home/moritz/bin/awoxl on"
+bindsym $mod+Ctrl+L exec "/home/moritz/bin/awoxl white 11"
 
 {% if desktop %}
-bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
-bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
-bindsym $mod+F2 exec "xdotool key XF86AudioMute"
+# This does not seem to work :/
+#bindsym $mod+F3 exec "xdotool key XF86AudioLowerVolume"
+#bindsym $mod+F4 exec "xdotool key XF86AudioRaiseVolume"
+#bindsym $mod+F2 exec "xdotool key XF86AudioMute"
+
+bindsym $mod+F3 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
+bindsym $mod+F4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
+bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 {% elif laptop %}
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
+{% elif bp %}
+bindsym $mod+F3 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
+bindsym $mod+F4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
+bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 {% endif %}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command py3status -c ~/.i3/i3status.conf
+{% if bp %}
+    output DVI-1-0
+{% endif %}
+    status_command py3status -c ~/.i3/i3status.conf
 }
 
+{% if bp %}
+bar {
+    output HDMI2
+    status_command py3status -c ~/.i3/i3status_clean.conf
+}
+{% endif %}
