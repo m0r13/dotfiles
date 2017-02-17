@@ -127,7 +127,7 @@ set $rws10 workspace 20
 {% elif laptop %}
 set $displayleft eDP1
 set $displayright DP2
-# vga=DP2, displayport=?
+# vga=DP2, displayport=HDMI1
 
 set $lws1 workspace 1 web
 set $lws2 workspace 2 irc
