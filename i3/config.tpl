@@ -261,12 +261,9 @@ exec i3-msg "$lws1; layout tabbed; exec chromium; exec thunderbird"
 exec i3-msg "$lws2; exec nemo --no-desktop"
 exec i3-msg "$rws1; exec urxvt -e weechat"
 exec i3-msg "$rws2; layout tabbed; exec urxvt -e ncmpcpp; exec spotify; exec pavucontrol"
-exec i3-msg "$rws3; exec urxvt -e zsh -i"
-exec i3-msg "$rws4; exec urxvt -e zsh -i"
-exec i3-msg "$rws5; exec urxvt -e zsh -i"
 
 for_window [title=".* Chromium$"] move $lws1
-for_window [title="Spotify"] move $rws2
+for_window [title="^Spotify$"] move $rws2
 {% elif laptop %}
 exec ~/bin/i3-battery.sh
 
@@ -354,6 +351,10 @@ bindsym $mod+Ctrl+L exec "/home/moritz/bin/awoxl white 11"
 bindsym $mod+F3 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
 bindsym $mod+F4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
 bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
+
+bindsym --whole-window $mod+button5 exec --no-startup-id "/home/moritz/bin/my-volume.sh down"
+bindsym --whole-window $mod+button4 exec --no-startup-id "/home/moritz/bin/my-volume.sh up"
+bindsym --whole-window $mod+button2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 {% elif laptop %}
 bindsym XF86MonBrightnessUp exec /usr/bin/xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec /usr/bin/xbacklight -dec 5
