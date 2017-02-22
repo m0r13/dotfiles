@@ -366,16 +366,30 @@ bindsym $mod+F2 exec --no-startup-id "/home/moritz/bin/my-volume.sh toggle"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+{% if desktop %}
 bar {
-{% if bp %}
-    output DVI-1-0
-{% endif %}
+    output HDMI-0
     status_command py3status -c ~/.i3/i3status.conf
 }
 
-{% if bp %}
+bar {
+    output DVI-I-1
+    status_command py3status -c ~/.i3/i3status_clean.conf
+}
+{% elif bp %}
+bar {
+    output DVI-1-0
+    status_command py3status -c ~/.i3/i3status.conf
+}
+
 bar {
     output HDMI2
     status_command py3status -c ~/.i3/i3status_clean.conf
 }
+{% else %}
+bar {
+    status_command py3status -c ~/.i3/i3status.conf
+}
 {% endif %}
+
