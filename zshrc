@@ -5,11 +5,12 @@ if [[ ("$hostname" = "moritz-laptop" || "$hostname" = "moritz-desktop") && -z $D
     exec startx
 fi
 
-if [[ "$hostname" = "moritz-desktop" || "$hostname" = "moritz-laptop" ]]; then
-    has_powerline=true
-else
-    has_powerline=false
-fi
+#if [[ "$hostname" = "moritz-desktop" ]]; then
+#    has_powerline=true
+#else
+#    has_powerline=false
+#fi
+has_powerline=false
 
 export EDITOR=vim
 
@@ -55,7 +56,8 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(battery git tmux tmuxinator ssh-agent)
+plugins=(battery git ssh-agent)
+zstyle :omz:plugins:ssh-agent identities id_rsa
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,4 +69,5 @@ if $has_powerline; then
 fi
 
 # Customize to your needs...
-export PATH=~/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/kde/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
+export PATH=$PATH:~/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/opt/kde/bin:/usr/bin/vendor_perl:/usr/bin/core_perl
+export PYTHONPATH=$PYTHONPATH:~/python-packages
